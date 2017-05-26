@@ -4,7 +4,11 @@
 
  class DataFactory  {
   constructor() {
-      this.GetData ={ Data: require("./../../../api/Data.json")}
+    try {
+      this.GetData = {Data: require("./../../../api/EmmaTest.json")}
+    }catch(err){
+      this.GetData = {Data:require("./../../../api/Data.json")}
+    }
 
   }
    createColHeader (){

@@ -1,18 +1,16 @@
 import React from 'react';
 // import {reactCellRendererFactory} from '../../../node_modules/ag-grid-react';
-
-
 import {AgGridReact} from '../../../node_modules/ag-grid-react';
 
 import "../../../node_modules/ag-grid/dist/styles/ag-grid.css"
 import "../../../node_modules/ag-grid/dist/styles/theme-fresh.css"
 
 import DataFactory from "./DataFactory.js";
-
-
+import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
+import * as loadGridData from "../../actions/AgGridAction";
 
 class AgGrid extends React.Component {
-
   constructor(){
     super();
     let data = new DataFactory();
@@ -107,9 +105,6 @@ class AgGrid extends React.Component {
           enableSorting="true"
          // pagination = "true"
           enableRangeSelection = "true"
-
-
-
         />
       </div>
     );
@@ -120,8 +115,18 @@ class AgGrid extends React.Component {
       </div>
     </div>);
   }
-
 }
 
-export default AgGrid;
+function mapStateToProps(state ,ownProps){
+  return{
+    GetData: state.GetData
+  };
+}
+
+function mapDispatchToProprs(dispatch) {
+  return {
+    actions:bindActionCreators(loadGridData,dispatch)
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProprs)( AgGrid);
 
