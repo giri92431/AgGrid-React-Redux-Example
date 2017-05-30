@@ -3,6 +3,7 @@
  */
 
 export default {
-  GetData: [],
+  GetDataHeader : [],
+  GetDataBody: [],
   ajaxCallsInProgress: 0
 };

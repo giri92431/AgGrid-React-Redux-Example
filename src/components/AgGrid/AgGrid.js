@@ -5,7 +5,6 @@ import {AgGridReact} from '../../../node_modules/ag-grid-react';
 import "../../../node_modules/ag-grid/dist/styles/ag-grid.css"
 import "../../../node_modules/ag-grid/dist/styles/theme-fresh.css"
 
-import DataFactory from "./DataFactory.js";
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as loadGridData from "../../actions/AgGridAction";
@@ -13,12 +12,11 @@ import * as loadGridData from "../../actions/AgGridAction";
 class AgGrid extends React.Component {
   constructor(){
     super();
-    let data = new DataFactory();
     this.state = {
       quickFilter: "",
       showGrid: true,
-      columnDef: data.createColHeader(),
-      rowData: data.createRowData(),
+      // columnDef: data.createColHeader(),
+      // rowData: data.createRowData(),
 
 
     };
@@ -97,8 +95,8 @@ class AgGrid extends React.Component {
           quickFilterText={this.state.quickFilterText}
 
           // binding to array properties
-          columnDefs={this.state.columnDef}
-          rowData={this.state.rowData}
+          columnDefs={this.props.GetHeader}
+          rowData={this.props.GetBody}
 
           // enabeling evenets
           enableFilter="true"
@@ -118,8 +116,10 @@ class AgGrid extends React.Component {
 }
 
 function mapStateToProps(state ,ownProps){
-  return{
-    GetData: state.GetData
+  debugger;
+ return{
+    GetHeader: state.GetDataHeader,
+   GetBody: state.GetDataBody
   };
 }
 

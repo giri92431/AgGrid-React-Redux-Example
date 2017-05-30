@@ -1,5 +1,5 @@
 
-<h3>Data Grid Exapmle using react AgGrid and handsontable</h3>   
+<h3>Data Grid Exapmle using react AgGrid </h3>   
 
 <h3>benefits</h3>
 
@@ -62,7 +62,7 @@
         Some node modules may rely on node-gyp, which requires Python on Windows.
       Install C++ Compiler. 
     
-    5. npm run setup
+    5. npm install
     
     6. npm start -s [ -s is an optional paramatr which will stop the extra noice in the comand line ]
       

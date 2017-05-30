@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 import {routerReducer} from 'react-router-redux';
-import GetData from "./GetDataReducer";
+import GetDataHeader from "./GetDataHeaderReducer";
+import GetDataBody from "./GetDataBodyReducer"
 
 const rootReducer = combineReducers({
   routing: routerReducer,
-   GetData
+  GetDataHeader,
+  GetDataBody
 });
 
 export default rootReducer;

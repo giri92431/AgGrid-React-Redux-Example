@@ -3,8 +3,8 @@
 import * as types  from "./actionType"
 import DataFactoryApi from  "../../api/DataFactoryAPi";
 
-export function LoadHeaderDataSucusses(data){
-  return {type: types.LOAD_Header_GRID_DATA,data};
+export function LoadHeaderDataSucusses(Headerdata){
+  return {type: types.LOAD_Header_GRID_DATA,Headerdata};
 }
 
 export function LoadRowDataSucusses(data){
@@ -14,8 +14,9 @@ export function LoadRowDataSucusses(data){
 
 export function loadGridHeader(){
   return function (dispatch){
-    return DataFactoryApi.createColHeader().then(GetData=> {
-      dispatch(LoadHeaderDataSucusses(GetData));
+    let DataApi = new DataFactoryApi();
+    return DataApi.createColHeader().then(Data=> {
+      dispatch(LoadHeaderDataSucusses(Data));
     }).catch(error=> {throw(error);
     });
   };
@@ -23,8 +24,9 @@ export function loadGridHeader(){
 
 export function loadGridRowData() {
   return function (dispatch) {
-    return DataFactoryApi.createRowData().then(GetData => {
-      dispatch(LoadRowDataSucusses(GetData));
+    let DataApi = new DataFactoryApi();
+    return DataApi.createRowData().then(Data => {
+      dispatch(LoadRowDataSucusses(Data));
     }).catch(error => {
       throw(error);
     });

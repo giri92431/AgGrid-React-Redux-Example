@@ -3,16 +3,16 @@
  */
 
  class DataFactoryApi  {
-  static constructor() {
+   constructor() {
     try {
-      this.GetData = require("./EmmaTest.json");
+      this.Data = require("./EmmaTest.json");
     }catch(err){
-      this.GetData =  require("./Data.json");
+      this.Data =  require("./Data.json");
     }
 
   }
-   static createColHeader (){
-   let jsonFile = this.GetData;
+  createColHeader (){
+   let jsonFile = this.Data[0];
    let ColHeader =[];
    for( let key in jsonFile)
     {
@@ -30,9 +30,9 @@
     }
 
 
-  static createRowData () {
+  createRowData () {
     return new Promise((resolve, reject)=>{ setTimeout(()=>{
-      resolve(Object.assign([],this.GetData));},10);
+      resolve(Object.assign([],this.Data));},10);
     });
   }
 
